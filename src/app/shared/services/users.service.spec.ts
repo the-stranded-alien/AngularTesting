@@ -5,7 +5,7 @@ import {UtilsService} from "./utils.service";
 
 describe('UsersService', () => {
   let usersService: UsersService;
-  let utilsService: UtilsService;
+  // let utilsService: UtilsService;
   // const utilsServiceMock = {
   //   pluck: jest.fn(),
   // };
@@ -13,13 +13,13 @@ describe('UsersService', () => {
     TestBed.configureTestingModule({
       providers: [
         UsersService,
-        UtilsService
+        // UtilsService
         // { provide: UtilsService, useValue: utilsServiceMock }
       ],
     })
 
     usersService = TestBed.inject(UsersService)
-    utilsService = TestBed.inject(UtilsService)
+    // utilsService = TestBed.inject(UtilsService)
   });
 
   it('creates a service', () => {
@@ -33,29 +33,32 @@ describe('UsersService', () => {
         name: 'foo'
       }
       usersService.addUser(user);
-      expect(usersService.users).toEqual([{id: '3', name: 'foo'}]);
+      // expect(usersService.users).toEqual([{id: '3', name: 'foo'}]);
+      expect(usersService.users$.getValue()).toEqual([{id: '3', name: 'foo'}]);
     });
   });
 
   describe('removeUser', () => {
     it('should remove a user', () => {
-      usersService.users = [{id: '3', name: 'foo'}];
+      // usersService.users = [{id: '3', name: 'foo'}];
+      usersService.users$.next([{id: '3', name: 'foo'}]);
       usersService.removeUser('3');
-      expect(usersService.users).toEqual([]);
+      // expect(usersService.users).toEqual([]);
+      expect(usersService.users$.getValue()).toEqual([])
     });
   });
 
-  describe('getUsernames', () => {
-    it('should get usernames', () => {
-      // utilsServiceMock.pluck.mockReturnValue(['foo']);
-      // expect(usersService.getUsernames()).toEqual(['foo']);
-      jest.spyOn(utilsService, 'pluck');
-      usersService.users = [{id: '3', name: 'foo'}];
-      usersService.getUsernames();
-      expect(utilsService.pluck).toHaveBeenCalledWith(
-        usersService.users,
-        'name'
-      )
-    });
-  });
+  // describe('getUsernames', () => {
+  //   it('should get usernames', () => {
+  //     // utilsServiceMock.pluck.mockReturnValue(['foo']);
+  //     // expect(usersService.getUsernames()).toEqual(['foo']);
+  //     jest.spyOn(utilsService, 'pluck');
+  //     usersService.users = [{id: '3', name: 'foo'}];
+  //     usersService.getUsernames();
+  //     expect(utilsService.pluck).toHaveBeenCalledWith(
+  //       usersService.users,
+  //       'name'
+  //     )
+  //   });
+  // });
 });
