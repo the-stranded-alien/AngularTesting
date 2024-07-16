@@ -1,6 +1,6 @@
 import {UsersService} from "./users.service";
 import {TestBed} from "@angular/core/testing";
-import {UserInteface} from "../types/user.interface";
+import {UserInterface} from "../types/user.interface";
 import {UtilsService} from "./utils.service";
 
 describe('UsersService', () => {
@@ -28,7 +28,7 @@ describe('UsersService', () => {
 
   describe('addUser', () => {
     it('should add a user', () => {
-      const user: UserInteface = {
+      const user: UserInterface = {
         id: '3',
         name: 'foo'
       }

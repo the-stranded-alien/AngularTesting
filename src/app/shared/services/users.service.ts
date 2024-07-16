@@ -1,15 +1,15 @@
 import {inject, Injectable} from '@angular/core';
-import { UserInteface } from '../types/user.interface';
+import { UserInterface } from '../types/user.interface';
 import {BehaviorSubject} from "rxjs";
 // import {UtilsService} from "./utils.service";
 
 @Injectable()
 export class UsersService {
   // utilsService = inject(UtilsService)
-  // users: UserInteface[] = [];
-  users$ = new BehaviorSubject<UserInteface[]>([]);
+  // users: UserInterface[] = [];
+  users$ = new BehaviorSubject<UserInterface[]>([]);
 
-  addUser(user: UserInteface): void {
+  addUser(user: UserInterface): void {
     // this.users = [...this.users, user];
     this.users$.next([...this.users$.getValue(), user]);
   }
