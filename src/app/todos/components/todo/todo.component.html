@@ -6,11 +6,12 @@
     <input
       class="toggle"
       data-testid="toggle"
+      data-cy="todoCheckbox"
       type="checkbox"
       [checked]="todo.isCompleted"
       (change)="toggleTodo()"
     />
-    <label data-testid="label" (dblclick)="setTodoInEditMode()">{{
+    <label data-testid="label" data-cy="todoLabel" (dblclick)="setTodoInEditMode()">{{
       todo.text
     }}</label>
     <button
